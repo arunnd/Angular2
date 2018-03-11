@@ -14,7 +14,6 @@ export class ProductListComponent implements OnInit{
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    showUser: boolean = false;
     errorMessage: string;
     selectedId: number;
 
@@ -41,7 +40,6 @@ export class ProductListComponent implements OnInit{
     }
     performFilter(filterBy: string): IProduct[]{
         filterBy = filterBy.toLocaleLowerCase();
-        this.showUser = false;
         return this.products.filter((product: IProduct) =>
     product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
@@ -49,30 +47,7 @@ export class ProductListComponent implements OnInit{
         this.showImage = !this.showImage;
     }
 
-    getUserDetails(id: number): void {
-        this.selectedId = id;
-        this._productService.getUserDetails(id)
-          .subscribe(users => {
-              this.users = users;
-          },
-          error => this.errorMessage = <any>error);
-        this.showUser = true;
-    }
 
-
-    addUserDetails(): void {
-        var user = {
-          name: 'dd',
-          username: 'ddd',
-          email: 'dd@dd.com',
-          phone: '123'
-        };
-        this._productService.addUserDetails(user)
-          .subscribe(users => {
-              this.users.push(users);
-          },
-          error => this.errorMessage = <any>error);
-    }
 
     ngOnInit(): void {
         console.log('oninit');

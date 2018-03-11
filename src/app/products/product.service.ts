@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { IProduct } from './product';
+import 'rxjs/add/operator/map';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,19 +15,12 @@ export class ProductService {
   private userUrl = 'http://jsonplaceholder.typicode.com/users';
 
   constructor(private http:HttpClient) { }
-
+  getProduct(id: number): Observable<IProduct> {
+    return this.getProducts()
+        .map((products: IProduct[]) => products.find(p => p.productId === id));
+}
   // GET request
   getProducts() {
       return this.http.get<IProduct[]>(this.productUrl);
-  }
-
-  // GET request with param
-  getUserDetails(id: number): Observable<any> {
-      return this.http.get<any>(`${this.userUrl}?id=${id}`);
-  }
-
-  // POST request
-  addUserDetails(user) : Observable<any> {
-      return this.http.post<any>(this.userUrl, user, httpOptions);
   }
 }

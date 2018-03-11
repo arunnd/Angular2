@@ -29,7 +29,7 @@
                         <th>Code</th>
                         <th>Available</th>
                         <th>Price</th>
-                        <th>Users</th>
+                        
                         <th>5 Star Rating</th>
                         
                     </tr>
@@ -43,18 +43,14 @@
                                 [style.width.px]='imageWidth'
                                 [style.margin.px]='imageMargin'>
                         </td>
-                        <td><!--<a [routerLink]="['/products', product.productId]"></a> -->
-                                {{ product.productName }}
+                        <td><a [routerLink]="['/products', product.productId]"> {{ product.productName }}</a> 
+                               
                             
 						</td>
                         <td>{{ product.productCode | lowercase | convertToSpaces: '-' }}</td>
                         <td>{{ product.releaseDate }}</td>
                         <td>{{ product.price | currency:'USD':true:'1.2-2'}}</td>
-                        <td>
-                            <button class='btn btn-primary' (click)='getUserDetails(product.productId)'>
-                            Users
-                             </button>
-                           </td>
+                        
                         <td>
 						<!--{{product.starRating}}-->
                         <pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'>
@@ -64,29 +60,6 @@
                 </tbody>
             </table>
         </div>
-        <div class='table-responsive pull-right' *ngIf='showUser' style="width:50%">
-            <table class='table'
-                   *ngIf='products && products.length'>
-              <thead>
-              <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Phone</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor='let user of users'>
-                <td>{{ user.name }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.phone}}</td>
-              </tr>
-              </tbody>
-            </table>
-            <button class='btn btn-primary' (click)='addUserDetails()'>
-              Add User
-            </button>
-          </div>
+        
     </div>
 </div>
