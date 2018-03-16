@@ -6,9 +6,10 @@ import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ProductGuardService } from './product-guard.service';
+import { SearchComponent } from '../search/search.component';
 
 @NgModule({
-  imports: [ 
+  imports: [
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent},
       { path: 'products/:id', canActivate: [ ProductGuardService ], component: ProductDetailComponent}
@@ -18,10 +19,11 @@ import { ProductGuardService } from './product-guard.service';
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    ConvertToSpacesPipe
-    
+    ConvertToSpacesPipe,
+    SearchComponent
   ],
-  providers: [ProductService,
+  providers: [
+    ProductService,
     ProductGuardService
   ]
 })
