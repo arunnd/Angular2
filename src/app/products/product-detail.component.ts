@@ -19,11 +19,18 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    // snapshot method
     const param = this._route.snapshot.paramMap.get('id');
     if (param) {
       const id = +param;
       this.getProduct(id);
     }
+
+    // observable method
+    /* this._route.paramMap.subscribe(params => {
+      this.getProduct(+params.get('id'));
+    }); */
+
   }
 
   getProduct(id: number) {
@@ -33,7 +40,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this._router.navigate(['/products']);
+    this._router.navigate(['/productMod/products']);
+
+    //this._router.navigate(['/productMod/products', '4']);
   }
 
 }
