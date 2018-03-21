@@ -20,8 +20,7 @@ import { SearchComponent } from '../search/search.component';
     SearchComponent
   ],
   providers: [
-    ProductService,
-    ProductGuardService
+    ProductService
   ]
 })
 export class ProductModule { }
