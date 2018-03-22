@@ -6,6 +6,7 @@ import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsRoutingMoudle } from './product-routing.module';
+import { ProductGuardService } from './product-guard.service';
 import { SearchComponent } from '../search/search.component';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SearchComponent } from '../search/search.component';
     SearchComponent
   ],
   providers: [
-    ProductService
+    ProductService,
+    ProductGuardService
   ]
 })
 export class ProductModule { }
